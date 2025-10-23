@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Cupo } from '../interfaces/cupo.interface';
 import { lastValueFrom } from 'rxjs';
-import { environment } from '../../environments/environment.development';
 import { ResponseHttp } from '../interfaces/response-http.interface';
+import { environment } from '../../environments/environment';
+environment
 
 @Injectable({
   providedIn: 'root'
