@@ -10,4 +10,5 @@ export interface Reserva {
     estado: boolean | null;
     cupo: any | null;
     vehiculo: any | null;
+    estadoDescripcion: string | null;
 }

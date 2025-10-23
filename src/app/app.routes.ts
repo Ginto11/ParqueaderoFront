@@ -39,7 +39,16 @@ export const routes: Routes = [
     },
     {
         path: 'dashboard-admin',
-        loadComponent: () => import('./pages/dashboards/dashboard-admin/dashboard-admin.component')
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./pages/dashboards/dashboard-admin/dashboard-admin.component'),
+            },
+            {
+                path: 'gestion-parqueaderos',
+                loadComponent: () => import('./pages/dashboards/dashboard-admin/gestionar-parqueadero/gestionar-parqueadero.component')
+            }
+        ]
     },
     {
         path: 'dashboard-cliente',

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { HeaderDashboardComponent } from '../../../../shared/header-dashboard/header-dashboard.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { PostVehiculo } from '../../../../interfaces/post-vehiculo.interface';
 import { FormsModule } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,6 +16,7 @@ import { RespuestasService } from '../../../../services/respuestas.service';
 })
 export default class RegistrarVehiculoComponent implements OnInit {
   
+  private router = inject(Router);
   private respuestasService = inject(RespuestasService);
   private localstorageService = inject(LocalstorageService);
   private vehiculoService = inject(VehiculoService);
@@ -38,6 +39,8 @@ export default class RegistrarVehiculoComponent implements OnInit {
       let res = await this.vehiculoService.registrar(this.vehiculo);
 
       if(res.codigo == 201) { alert(res.mensaje); this.limpiarCampos(); }
+
+      this.router.navigate(['dashboard-cliente']);
 
     }catch(error: unknown){
       alert(this.respuestasService.serverError(error));

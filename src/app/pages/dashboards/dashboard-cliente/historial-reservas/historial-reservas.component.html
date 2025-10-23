@@ -54,26 +54,23 @@
                         <td class="p-3"> {{ reserva.fechaReserva | date: 'dd-MM-yyyy hh:mm' }} </td>
                         <td class="p-3"> {{ reserva.fechaIngreso | date: 'dd-MM-yyyy hh:mm' }} </td>
                         <td class="p-3"> {{ (reserva.costo != null) ? (reserva.costo | currency:'COP $':'symbol':'1.2-2') : 'COP $0.00' }} </td>
-                        @if (reserva.estado == true && reserva.costo != null) {
-                            <td class="p-3 text-yellow-600 font-semibold">Finalizada</td>
-                        } 
-
-                        @if(reserva.estado == false){
-                            <td class="p-3 text-red-600 font-semibold">Cancelada</td>
-                        }
-
-                        @if(reserva.estado == true && reserva.costo == null){
-                            <td class="p-3 text-green-600 font-semibold">Activa</td>
-                        }
+                        
+                        <td class="p-3 font-semibold"
+                            [ngClass]="{
+                                'text-green-600': reserva.estadoDescripcion == 'Activa',
+                                'text-red-600': reserva.estadoDescripcion == 'Cancelada',
+                                'text-yellow-600': reserva.estadoDescripcion == 'Finalizada'
+                            }" 
+                        > {{reserva.estadoDescripcion}} </td>
                         <td class="p-3 grid grid-cols-2">
                             <button 
-                                [disabled]="((reserva.costo != null && reserva.estado == true) || (reserva.costo == 0 && reserva.estado == false)) ? true : false" 
-                                [style.cursor]="((reserva.costo != null && reserva.estado == true) || (reserva.costo == 0 && reserva.estado == false)) ? 'not-allowed' : 'pointer'">
+                                [disabled]="(reserva.estadoDescripcion == 'Finalizada' || reserva.estadoDescripcion == 'Cancelada') ? true : false" 
+                                [style.cursor]="(reserva.estadoDescripcion == 'Finalizada' || reserva.estadoDescripcion == 'Cancelada') ? 'not-allowed' : 'pointer'">
                                 <i class="pi pi-pencil" style="color: oklch(68.1% 0.162 75.834);"></i>
                             </button>
                             <button 
-                                [disabled]="((reserva.costo != null && reserva.estado == true || (reserva.costo == 0 && reserva.estado == false))) ? true : false" 
-                                [style.cursor]="((reserva.costo != null && reserva.estado == true) || (reserva.costo == 0 && reserva.estado == false)) ? 'not-allowed' : 'pointer'"
+                                [disabled]="(reserva.estadoDescripcion == 'Finalizada' || reserva.estadoDescripcion == 'Cancelada') ? true : false" 
+                                [style.cursor]="(reserva.estadoDescripcion == 'Finalizada' || reserva.estadoDescripcion == 'Cancelada') ? 'not-allowed' : 'pointer'"
                                 title="Cancelar Reserva" (click)="cancelarReserva(reserva.id)">
                                 <i class="pi pi-trash" style="color: oklch(57.7% 0.245 27.325);"></i>
                             </button>
