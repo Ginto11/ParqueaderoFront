@@ -46,7 +46,6 @@ export const routes: Routes = [
             },
             {
                 path: 'gestion-parqueaderos',
-                pathMatch: 'full',
                 loadComponent: () => import('./pages/dashboards/dashboard-admin/gestionar-parqueadero/gestionar-parqueadero.component')
             }
         ]
