@@ -1,0 +1,94 @@
+<app-header-dashboard />
+<section class="min-h-screen bg-gray-50 p-6 md:p-10">
+    <!-- Botón de regresar -->
+    <div class="mb-6">
+        <button
+            routerLink="/dashboard-cliente"
+            class="flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-xl font-medium hover:bg-blue-700 transition cursor-pointer">
+            <i class="pi pi-arrow-left"></i>
+            Regresar
+        </button>
+    </div>
+
+    <!-- Encabezado -->
+    <header class="mb-8 text-center">
+        <h1 class="text-3xl font-bold text-blue-700">Historial de Reservas</h1>
+        <p class="text-gray-600">Consulta todas tus reservas pasadas y activas.</p>
+    </header>
+
+    <!-- Barra de búsqueda y filtro -->
+    <div class="flex justify-between items-center mb-6 flex-col md:flex-row gap-4">
+        <input type="text" placeholder="Buscar por placa o usuario..."
+            class="w-full md:w-1/2 border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+        <select
+            class="border border-gray-300 rounded-xl p-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">Todos los estados</option>
+            <option value="activa">Activas</option>
+            <option value="finalizada">Finalizadas</option>
+            <option value="cancelada">Canceladas</option>
+        </select>
+    </div>
+
+    <!-- Tabla -->
+    <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+        <table class="w-full text-sm border-collapse">
+            <thead class="bg-blue-600 text-white">
+                <tr>
+                    <th class="p-3 text-left">#</th>
+                    <th class="p-3 text-left">Vehículo</th>
+                    <th class="p-3 text-left">Cupo</th>
+                    <th class="p-3 text-left">Fecha Reserva</th>
+                    <th class="p-3 text-left">Fecha Ingreso</th>
+                    <th class="p-3 text-left">Costo</th>
+                    <th class="p-3 text-left">Estado</th>
+                    <th class="p-3 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(reserva of reservas; track reserva.id){
+                    <tr class="border-b hover:bg-gray-50 transition">
+                        <td class="p-3"> {{ reserva.id }} </td>
+                        <td class="p-3"> {{ reserva.vehiculo.placa }} </td>
+                        <td class="p-3">Cupo #{{ reserva.cupoId }}</td>
+                        <td class="p-3"> {{ reserva.fechaReserva | date: 'dd-MM-yyyy hh:mm' }} </td>
+                        <td class="p-3"> {{ reserva.fechaIngreso | date: 'dd-MM-yyyy hh:mm' }} </td>
+                        <td class="p-3"> {{ (reserva.costo != null) ? (reserva.costo | currency:'COP $':'symbol':'1.2-2') : 'COP $0.00' }} </td>
+                        @if (reserva.estado == true && reserva.costo != null) {
+                            <td class="p-3 text-yellow-600 font-semibold">Finalizada</td>
+                        } 
+
+                        @if(reserva.estado == false){
+                            <td class="p-3 text-red-600 font-semibold">Cancelada</td>
+                        }
+
+                        @if(reserva.estado == true && reserva.costo == null){
+                            <td class="p-3 text-green-600 font-semibold">Activa</td>
+                        }
+                        <td class="p-3 grid grid-cols-2">
+                            <button 
+                                [disabled]="((reserva.costo != null && reserva.estado == true) || (reserva.costo == 0 && reserva.estado == false)) ? true : false" 
+                                [style.cursor]="((reserva.costo != null && reserva.estado == true) || (reserva.costo == 0 && reserva.estado == false)) ? 'not-allowed' : 'pointer'">
+                                <i class="pi pi-pencil" style="color: oklch(68.1% 0.162 75.834);"></i>
+                            </button>
+                            <button 
+                                [disabled]="((reserva.costo != null && reserva.estado == true || (reserva.costo == 0 && reserva.estado == false))) ? true : false" 
+                                [style.cursor]="((reserva.costo != null && reserva.estado == true) || (reserva.costo == 0 && reserva.estado == false)) ? 'not-allowed' : 'pointer'"
+                                title="Cancelar Reserva" (click)="cancelarReserva(reserva.id)">
+                                <i class="pi pi-trash" style="color: oklch(57.7% 0.245 27.325);"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Paginación -->
+    <div class="flex justify-center items-center mt-6 gap-2">
+        <button class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300">Anterior</button>
+        <button class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">1</button>
+        <button class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300">2</button>
+        <button class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300">Siguiente</button>
+    </div>
+</section>

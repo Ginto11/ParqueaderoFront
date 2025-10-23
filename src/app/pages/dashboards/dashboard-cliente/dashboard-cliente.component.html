@@ -1,0 +1,118 @@
+<app-header-dashboard />
+<section class="min-h-screen bg-gray-50 p-6 md:p-10">
+    <!-- Encabezado -->
+    <header class="mb-8">
+        <h1 class="text-3xl font-bold text-blue-700">Mi Panel</h1>
+    </header>
+
+    <!-- Información personal -->
+    <div class="bg-white shadow rounded-2xl p-6 mb-10">
+        <h3 class="text-lg font-semibold text-blue-600 mb-4">Información Personal</h3>
+        <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+            <p><strong>Nombre Completo:</strong> {{ usuarioLogueado.nombreCompleto }} </p>
+            <p><strong>Telefono:</strong> {{ (usuarioLogueado.numeroTelefono) ? usuarioLogueado.numeroTelefono : 'No tiene' }} </p>
+            <p><strong>Usuario:</strong> {{ usuarioLogueado.identificadorUsuario }} </p>
+            <p><strong>Rol:</strong> {{ usuarioLogueado.rol }} </p>
+        </div>
+        <button class="mt-6 bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition">
+            Editar Información
+        </button>
+    </div>
+
+    <!-- Reservas activas -->
+    <div class="bg-white shadow rounded-2xl p-6 mb-10">
+        <h3 class="text-lg font-semibold text-blue-600 mb-4">Mis reservas activas.</h3>
+        <table class="w-full border-collapse text-sm">
+            <thead>
+                <tr class="bg-gray-100 text-left">
+                    <th class="p-2">Fecha</th>
+                    <th class="p-2">Hora Entrada</th>
+                    <th class="p-2">Hora Salida</th>
+                    <th class="p-2">Ubicación</th>
+                    <th class="p-2">Estado</th>
+                    <th class="p-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(reserva of reservasActivas; track reserva.id){
+                        <tr class="border-b">
+                            <td class="p-2"> {{ reserva.fechaReserva | date : 'dd-MM-yyyy hh:mm a' }} </td>
+                            <td class="p-2"> {{ reserva.fechaIngreso | date: 'shortTime' }} </td>
+                            <td class="p-2"> {{ (reserva.fechaSalida != null) ? (reserva.fechaSalida | date: 'shortTime') : 'Sin definir.' }} </td>
+                            <td class="p-2"> Cupo Nº {{ reserva.cupoId }} </td>
+                            @if (reserva.estado == true && reserva.costo != null) {
+                                <td class="p-3 text-yellow-600 font-semibold">Finalizada</td>
+                            } 
+
+                            @if(reserva.estado == false){
+                                <td class="p-3 text-red-600 font-semibold">Cancelada</td>
+                            }
+
+                            @if(reserva.estado == true && reserva.costo == null){
+                                <td class="p-3 text-green-600 font-semibold">Activa</td>
+                            }
+                            <td class="p-2">
+                                <button class="text-red-600 cursor-pointer hover:underline" (click)="cancelarReserva(reserva.id)" >Cancelar</button>
+                            </td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Historial de reservas -->
+    <div class="bg-white shadow rounded-2xl p-6 mb-10">
+        <h3 class="text-lg font-semibold text-blue-600 mb-4">Historial de reservas más recientes.</h3>
+        <table class="w-full border-collapse text-sm">
+            <thead>
+                <tr class="bg-gray-100 text-left">
+                    <th class="p-2">Fecha</th>
+                    <th class="p-2">Duración</th>
+                    <th class="p-2">Ubicación</th>
+                    <th class="p-2">Costo</th>
+                    <th class="p-2">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(reserva of historialReservas; track reserva.id){
+                    <tr class="border-b">
+                        <td class="p-2"> {{ reserva.fechaReserva | date : 'dd-MM-yyyy hh:mm a' }} </td>
+                        <td class="p-2"> {{ (reserva.duracion) ? `${reserva.duracion} H` : '0 H' }} </td>
+                        <td class="p-2"> Cupo Nº {{ reserva.cupoId }}</td>
+                        <td class="p-2"> {{ (reserva.costo != null) ? (reserva.costo | currency:'COP $':'symbol':'1.2-2') : 'COP $0.00' }} </td>
+                        @if (reserva.estado == true && reserva.costo != null) {
+                            <td class="p-3 text-yellow-600 font-semibold">Finalizada</td>
+                        } 
+                        @if(reserva.estado == false){
+                            <td class="p-3 text-red-600 font-semibold">Cancelada</td>
+                        }
+                        @if(reserva.estado == true && reserva.costo == null){
+                            <td class="p-3 text-green-600 font-semibold">Activa</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- Acciones rápidas -->
+    <div class="grid md:grid-cols-4 gap-6">
+        <a routerLink="nueva-reserva"
+            class="bg-blue-600 text-white p-6 rounded-2xl shadow hover:bg-blue-700 transition text-center font-semibold">
+            Nueva Reserva
+        </a>
+        <a routerLink="historial-reservas"
+            class="bg-gray-600 text-white p-6 rounded-2xl shadow hover:bg-gray-700 transition text-center font-semibold">
+            Ver Historial
+        </a>
+        <a routerLink="ayuda"
+            class="bg-green-600 text-white p-6 rounded-2xl shadow hover:bg-green-700 transition text-center font-semibold">
+            Soporte / Ayuda
+        </a>
+    
+        <a routerLink="registrar-vehiculo"
+            class="bg-yellow-600 text-white p-6 rounded-2xl shadow hover:bg-yellow-700 transition text-center font-semibold">
+            Registrar Vehiculo
+        </a>
+    </div>
+</section>
+

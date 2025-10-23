@@ -1,0 +1,6 @@
+<header class="p-4 bg-white flex justify-around sticky top-0 shadow">
+    <h1 class="text-3xl text-blue-600 font-bold">Bienvenido: {{ usuario.nombreCompleto }} </h1>
+    <nav class="flex gap-4 items-center">
+        <a (click)="salir()" class="font-bold" routerLink="/ingresar"> <i class="pi pi-sign-out"></i> Salir</a>
+    </nav>
+</header>

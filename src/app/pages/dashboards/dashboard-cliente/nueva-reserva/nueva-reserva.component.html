@@ -1,0 +1,61 @@
+<app-header-dashboard />
+<section class="min-h-screen bg-gray-50 p-6 md:p-10 flex justify-center items-start">
+    <div class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-lg">
+        <h2 class="text-2xl font-bold text-blue-700 mb-6 text-center">
+            Nueva Reserva
+        </h2>
+
+        <form>
+            <!-- Vehículo -->
+            <div class="mb-5">
+                <label class="block text-gray-700 font-medium mb-2">Vehículo</label>
+                <select
+                    required
+                    [(ngModel)]="reserva.vehiculoId"
+                    name="vehiculoId"
+                    class="w-full border border-gray-300 rounded-xl p-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Seleccione un vehículo</option>
+                    @for(vehiculo of vehiculos; track vehiculo.id){
+                        <option [value]="vehiculo.id"> {{ vehiculo.placa }} </option>
+                    }
+                </select>
+            </div>
+
+
+            <!-- Cupo -->
+            <div class="mb-5">
+                <label class="block text-gray-700 font-medium mb-2">Cupo</label>
+                <select
+                    required
+                    [(ngModel)]="reserva.cupoId"
+                    name="cupoId"
+                    class="w-full border border-gray-300 rounded-xl p-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>Seleccione un cupo</option>
+                    @for(cupo of cupos; track cupo.id){
+                        <option [value]="cupo.id"> {{ `Nº ${cupo.id}` }} </option>
+                    }
+                </select>
+            </div>
+
+            <!-- Fecha de Ingreso -->
+            <div class="mb-5">
+                <label class="block text-gray-700 font-medium mb-2">Fecha de Ingreso</label>
+                <input type="datetime-local" [(ngModel)]="reserva.fechaIngreso" name="fechaIngreso" required
+                    class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+
+            <!-- Botón -->
+            <div class="grid grid-cols-2 gap-1">
+                <button type="button" routerLink="/dashboard-cliente"
+                    class="bg-red-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-red-700 transition cursor-pointer">
+                    Cancelar
+                </button>
+                <button type="button"
+                    (click)="registrarReserva()"
+                    class="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition cursor-pointer">
+                    Registrar Reserva
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

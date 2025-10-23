@@ -1,0 +1,81 @@
+<app-header-dashboard />
+<section class="min-h-screen bg-gray-100 p-6 md:p-10">
+  <!-- Encabezado -->
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold text-blue-700">Panel de Gestión</h1>
+    <p class="text-gray-600">Bienvenido, Admin. Aquí puedes monitorear y gestionar tu parqueadero.</p>
+  </header>
+
+  <!-- Cards de métricas principales -->
+  <div class="grid md:grid-cols-4 gap-6 mb-10">
+    <div class="bg-white shadow rounded-2xl p-6 text-center">
+      <h3 class="text-gray-500">Cupos Disponibles</h3>
+      <p class="text-3xl font-bold text-green-600">120</p>
+    </div>
+    <div class="bg-white shadow rounded-2xl p-6 text-center">
+      <h3 class="text-gray-500">Reservas Activas</h3>
+      <p class="text-3xl font-bold text-blue-600">35</p>
+    </div>
+    <div class="bg-white shadow rounded-2xl p-6 text-center">
+      <h3 class="text-gray-500">Vehículos Hoy</h3>
+      <p class="text-3xl font-bold text-yellow-600">240</p>
+    </div>
+    <div class="bg-white shadow rounded-2xl p-6 text-center">
+      <h3 class="text-gray-500">Ingresos del Día</h3>
+      <p class="text-3xl font-bold text-purple-600">$1.200.000</p>
+    </div>
+  </div>
+
+  <!-- Sección con gráficos y tablas -->
+  <div class="grid md:grid-cols-2 gap-8">
+    <!-- Gráfico de ocupación -->
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h3 class="text-lg font-semibold text-blue-600 mb-4">Ocupación en Tiempo Real</h3>
+      <div class="h-64 flex items-center justify-center text-gray-400">
+        [Aquí va un gráfico de barras o donut con Recharts/Chart.js]
+      </div>
+    </div>
+
+    <!-- Tabla de últimas reservas -->
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h3 class="text-lg font-semibold text-blue-600 mb-4">Últimas Reservas</h3>
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="bg-gray-100 text-left">
+            <th class="p-2">Cliente</th>
+            <th class="p-2">Placa</th>
+            <th class="p-2">Hora</th>
+            <th class="p-2">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="p-2">Juan Pérez</td>
+            <td class="p-2">ABC-123</td>
+            <td class="p-2">08:30 AM</td>
+            <td class="p-2 text-green-600">Activa</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-2">María Gómez</td>
+            <td class="p-2">XYZ-987</td>
+            <td class="p-2">09:15 AM</td>
+            <td class="p-2 text-red-600">Cancelada</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Acciones rápidas -->
+  <div class="mt-10 grid md:grid-cols-3 gap-6">
+    <a href="/gestionar-parqueaderos" class="bg-blue-600 text-white p-6 rounded-2xl shadow hover:bg-blue-700 transition text-center font-semibold">
+      Gestionar Parqueaderos
+    </a>
+    <a href="/reservas" class="bg-green-600 text-white p-6 rounded-2xl shadow hover:bg-green-700 transition text-center font-semibold">
+      Ver Reservas
+    </a>
+    <a href="/reportes" class="bg-purple-600 text-white p-6 rounded-2xl shadow hover:bg-purple-700 transition text-center font-semibold">
+      Reportes
+    </a>
+  </div>
+</section>

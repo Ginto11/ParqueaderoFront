@@ -1,0 +1,53 @@
+- Gestión de usuarios y roles
+
+Administrador (gestiona tarifas, plazas, reportes).
+
+Operador (registra entradas y salidas).
+
+Cliente (consulta disponibilidad, reserva, paga).
+
+- Gestión de parqueaderos y plazas
+
+Registrar parqueaderos (dirección, capacidad, tarifas).
+
+Estado de cada plaza (ocupada, libre, reservada, mantenimiento).
+
+Visualización tipo mapa o grilla en el frontend.
+
+- Control de entradas y salidas
+
+Registrar entrada por placa del vehículo.
+
+Control de tiempo de permanencia.
+
+Generar costo al momento de salida.
+
+- Reservas en línea
+
+Cliente reserva espacio.
+
+Bloqueo temporal del cupo.
+
+Cancelación o modificación.
+
+- Pagos
+
+Integración con pasarela de pago (ej: PayU, MercadoPago, Stripe).
+
+Métodos: efectivo, tarjeta, QR.
+
+- Reportes
+
+Reporte de ingresos diarios/mensuales.
+
+Historial de ocupación.
+
+Estadísticas de usuarios y vehículos frecuentes.
+
+- Extras opcionales
+
+Integración con cámaras (reconocimiento de placas).
+
+Notificaciones push (cuando una reserva está próxima a vencer).
+
+Dashboard en tiempo real para el admin.

@@ -1,0 +1,43 @@
+<app-header-dashboard />
+<section class="min-h-screen bg-gray-50 p-6 md:p-10 flex justify-center items-start">
+  <div class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-lg">
+    <h2 class="text-2xl font-bold text-blue-700 mb-6 text-center">
+      Soporte y Ayuda
+    </h2>
+
+    <p class="text-gray-600 text-center mb-8">
+      ¿Tienes algún problema o duda? Cuéntanos qué sucede y nuestro equipo te ayudará lo antes posible.
+    </p>
+
+    <form>
+      <!-- Asunto -->
+      <div class="mb-5">
+        <label class="block text-gray-700 font-medium mb-2">Asunto</label>
+        <input type="text" name="asunto" placeholder="Ej: Problema al iniciar sesión" required
+          class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Descripción -->
+      <div class="mb-5">
+        <label class="block text-gray-700 font-medium mb-2">Descripción</label>
+        <textarea name="descripcion" placeholder="Describe el problema con detalle..." required
+          class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 max-h-52 overflow-y-auto resize-none"
+          rows="5"></textarea>
+      </div>
+
+      <!-- Botones -->
+      <div class="grid md:grid-cols-2 gap-1">
+        <button type="button" routerLink="/dashboard-cliente"
+          class="bg-red-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-red-700 transition cursor-pointer">
+          Cancelar
+        </button>
+
+        <button type="submit"
+          class="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition cursor-pointer">
+          Enviar Solicitud
+        </button>
+      </div>
+    </form>
+
+  </div>
+</section>
