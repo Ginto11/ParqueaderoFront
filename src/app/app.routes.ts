@@ -38,23 +38,6 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'dashboard-admin',
-        children: [
-            {
-                path: '',
-                loadComponent: () => import('./pages/dashboards/dashboard-admin/dashboard-admin.component'),
-            },
-            {
-                redirectTo: '',
-                pathMatch: 'full'
-            },
-            {
-                path: 'gestion-parqueaderos',
-                loadComponent: () => import('./pages/dashboards/dashboard-admin/gestionar-parqueadero/gestionar-parqueadero.component')
-            }
-        ]
-    },
-    {
         path: 'dashboard-cliente',
         children: [
             {
@@ -76,6 +59,16 @@ export const routes: Routes = [
             {
                 path: 'ayuda',
                 loadComponent: () => import('./pages/dashboards/dashboard-cliente/soporte-ayuda/soporte-ayuda.component')
+            }
+        ]
+    },
+    {
+        path: 'dashboard-admin',
+        loadComponent: () => import('./pages/dashboards/dashboard-admin/dashboard-admin.component'),
+        children: [
+            {
+                path: 'gestion-parqueaderos',
+                loadComponent: () => import('./pages/dashboards/dashboard-admin/gestionar-parqueadero/gestionar-parqueadero.component')
             }
         ]
     }
