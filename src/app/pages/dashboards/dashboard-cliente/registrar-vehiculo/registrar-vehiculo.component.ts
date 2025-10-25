@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { HeaderDashboardComponent } from '../../../../shared/header-dashboard/header-dashboard.component';
 import { Router, RouterLink } from '@angular/router';
 import { PostVehiculo } from '../../../../interfaces/post-vehiculo.interface';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +9,7 @@ import { RespuestasService } from '../../../../services/respuestas.service';
 
 @Component({
   selector: 'app-registrar-vehiculo',
-  imports: [HeaderDashboardComponent, RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule],
   templateUrl: './registrar-vehiculo.component.html',
   styles: ``
 })

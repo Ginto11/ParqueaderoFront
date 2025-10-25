@@ -42,11 +42,11 @@ export default class IngresarComponent implements OnInit {
       if (res.codigo == 200) {
         
         if(res.usuario.rol == 'Admin'){
-          this.router.navigate(['dashboard-admin'])
+          this.router.navigate(['dashboard/admin'])
         }
 
         if(res.usuario.rol == 'Cliente'){
-          this.router.navigate(['dashboard-cliente'])
+          this.router.navigate(['dashboard/cliente'])
         }
 
         this.localstorageService.setItem("usuario-parqueadero", JSON.stringify(res.usuario));

@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import LayoutPublicoComponent from './pages/publico/layout-publico/layout-publico.component';
+import DashboardAdminComponent from './pages/dashboards/dashboard-admin/dashboard-admin.component';
+import { DashboardLayoutComponent } from './pages/dashboards/dashboard-layout/dashboard-layout.component';
 
 export const routes: Routes = [
     {
@@ -38,41 +40,50 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'dashboard-cliente',
+        path: 'dashboard',
+        component: DashboardLayoutComponent,
         children: [
+
             {
-                path: '',
-                loadComponent: () => import('./pages/dashboards/dashboard-cliente/dashboard-cliente.component')
+                path: 'cliente',
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./pages/dashboards/dashboard-cliente/dashboard-cliente.component')
+                    },
+                    {
+                        path: 'registrar-vehiculo',
+                        loadComponent: () => import('./pages/dashboards/dashboard-cliente/registrar-vehiculo/registrar-vehiculo.component')
+                    },
+                    {
+                        path: 'nueva-reserva',
+                        loadComponent: () => import('./pages/dashboards/dashboard-cliente/nueva-reserva/nueva-reserva.component')
+                    },
+                    {
+                        path: 'historial-reservas',
+                        loadComponent: () => import('./pages/dashboards/dashboard-cliente/historial-reservas/historial-reservas.component')
+                    },
+                    {
+                        path: 'ayuda',
+                        loadComponent: () => import('./pages/dashboards/dashboard-cliente/soporte-ayuda/soporte-ayuda.component')
+                    }
+                ]
             },
             {
-                path: 'registrar-vehiculo',
-                loadComponent: () => import('./pages/dashboards/dashboard-cliente/registrar-vehiculo/registrar-vehiculo.component')
-            },
-            {
-                path: 'nueva-reserva',
-                loadComponent: () => import('./pages/dashboards/dashboard-cliente/nueva-reserva/nueva-reserva.component')
-            },
-            {
-                path: 'historial-reservas',
-                loadComponent: () => import('./pages/dashboards/dashboard-cliente/historial-reservas/historial-reservas.component')
-            },
-            {
-                path: 'ayuda',
-                loadComponent: () => import('./pages/dashboards/dashboard-cliente/soporte-ayuda/soporte-ayuda.component')
+                path: 'admin',
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./pages/dashboards/dashboard-admin/dashboard-admin.component'),
+                    },
+                    {
+                        path: 'gestion-parqueaderos',
+                        loadComponent: () => import('./pages/dashboards/dashboard-admin/gestionar-parqueadero/gestionar-parqueadero.component')
+                    }
+                ]
             }
-        ]
-    },
-    {
-        path: 'dashboard-admin',
-        children: [
-            {
-                path: '',
-                loadComponent: () => import('./pages/dashboards/dashboard-admin/dashboard-admin.component'),
-            },
-            {
-                path: 'gestion-parqueaderos',
-                loadComponent: () => import('./pages/dashboards/dashboard-admin/gestionar-parqueadero/gestionar-parqueadero.component')
-            }
-        ]
+
+
+        ],
     }
 ];

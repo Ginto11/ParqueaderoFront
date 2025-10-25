@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { HeaderDashboardComponent } from '../../../../shared/header-dashboard/header-dashboard.component';
 import { RouterLink } from '@angular/router';
 import { Vehiculo } from '../../../../interfaces/vehiculo.interface';
 import { VehiculoService } from '../../../../services/vehiculo.service';
@@ -14,7 +13,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nueva-reserva',
-  imports: [HeaderDashboardComponent, RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule],
   templateUrl: './nueva-reserva.component.html',
   styles: ``
 })

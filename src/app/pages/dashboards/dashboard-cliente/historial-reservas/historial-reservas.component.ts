@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HeaderDashboardComponent } from '../../../../shared/header-dashboard/header-dashboard.component';
 import { ReservaService } from '../../../../services/reserva.service';
 import { Reserva } from '../../../../interfaces/reserva.interface';
 import { LocalstorageService } from '../../../../services/localstorage.service';
@@ -12,7 +11,7 @@ registerLocaleData(localeEsCo);
 
 @Component({
   selector: 'app-historial-reservas',
-  imports: [RouterLink, HeaderDashboardComponent, CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './historial-reservas.component.html',
   styles: ``
 })

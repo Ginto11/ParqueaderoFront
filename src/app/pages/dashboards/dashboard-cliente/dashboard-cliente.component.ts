@@ -1,5 +1,4 @@
 import { Component, inject} from '@angular/core';
-import { HeaderDashboardComponent } from '../../../shared/header-dashboard/header-dashboard.component';
 import { RouterLink } from '@angular/router';
 import { LocalstorageService } from '../../../services/localstorage.service';
 import { RespuestasService } from '../../../services/respuestas.service';
@@ -9,7 +8,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard-cliente',
-  imports: [HeaderDashboardComponent, RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './dashboard-cliente.component.html',
   styles: ``
 })

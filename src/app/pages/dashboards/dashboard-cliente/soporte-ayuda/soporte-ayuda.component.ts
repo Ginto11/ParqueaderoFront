@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { HeaderDashboardComponent } from '../../../../shared/header-dashboard/header-dashboard.component';
 import { Router, RouterLink } from "@angular/router";
 import { Soporte } from '../../../../interfaces/post-soporte.interface';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +8,7 @@ import { LocalstorageService } from '../../../../services/localstorage.service';
 
 @Component({
   selector: 'app-soporte-ayuda',
-  imports: [HeaderDashboardComponent, RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule],
   templateUrl: './soporte-ayuda.component.html',
   styles: ``
 })

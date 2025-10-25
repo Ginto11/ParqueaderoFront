@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { HeaderDashboardComponent } from "../../../../shared/header-dashboard/header-dashboard.component";
 import { CupoService } from '../../../../services/cupo.service';
 import { RespuestasService } from '../../../../services/respuestas.service';
 import { CupoOcupado } from '../../../../interfaces/cupos-ocupados.interface';
@@ -8,7 +7,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-gestionar-parqueadero',
-  imports: [HeaderDashboardComponent, CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './gestionar-parqueadero.component.html',
   styles: ``
 })
