@@ -40,7 +40,7 @@ export default class SoporteAyudaComponent implements OnInit {
 
       if(res.codigo == 201){ alert('Registro exitoso. Espera que te contacten.') };
 
-      this.router.navigate(['dashboard-cliente'])
+      this.router.navigate(['dashboard/cliente'])
 
     }catch(error){
       alert(this.respuestasService.serverError(error));

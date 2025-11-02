@@ -3,7 +3,8 @@ export interface Reserva {
     vehiculoId: number | null;
     cupoId: number | null;
     fechaReserva: Date | null;
-    fechaIngreso: Date | null;
+    fechaIngresoEstipulada: Date | null;
+    fechaIngresoReal: Date | null;
     fechaSalida: Date | null;
     costo: number | null;
     duracion: number | null;

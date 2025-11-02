@@ -33,4 +33,14 @@ export class CupoService {
       throw error;
     }
   }
+
+  obtenerCupos = async (dato: string): Promise<ResponseHttp> => {
+    try{
+      return lastValueFrom(
+        this.http.get<ResponseHttp>(`${environment.URL_SERVER}/api/cupos/${dato}`)
+      );
+    }catch(error){
+      throw error;
+    }
+  }
 }

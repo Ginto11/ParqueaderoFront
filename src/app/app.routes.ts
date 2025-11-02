@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import LayoutPublicoComponent from './pages/publico/layout-publico/layout-publico.component';
-import DashboardAdminComponent from './pages/dashboards/dashboard-admin/dashboard-admin.component';
 import { DashboardLayoutComponent } from './pages/dashboards/dashboard-layout/dashboard-layout.component';
 
 export const routes: Routes = [

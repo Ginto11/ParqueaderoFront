@@ -1,11 +1,24 @@
-<header class="p-4 bg-white flex justify-around sticky top-0 shadow">
-    <h1 class="text-3xl text-blue-600 font-bold">ParkGo</h1>
-    <nav class="flex gap-4 items-center text-gray-700">
-        <a class="font-bold" routerLink="inicio" routerLinkActive="active"> <i class="pi pi-home"></i> Inicio</a>
-        <a class="font-bold" routerLink="nosotros" routerLinkActive="active"> <i class="pi pi-info-circle"></i> Nosotros</a>
-        <a class="font-bold" routerLink="servicios" routerLinkActive="active"> <i class="pi pi-box"></i> Servicios</a>
-        <a class="font-bold" routerLink="contacto" routerLinkActive="active"> <i class="pi pi-address-book"></i> Contacto</a>
-        <a class="font-bold" routerLink="registrarse" routerLinkActive="active"> <i class="pi pi-user-plus"></i> Registrarse</a>
-        <a class="font-bold" routerLink="ingresar" routerLinkActive="active"> <i class="pi pi-sign-in"></i> Ingresar</a>
-    </nav>
+<header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-18">
+            <div class="flex items-center gap-3">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#3B82F6" />
+                    <path d="M12 20h16M20 12v16" stroke="white" stroke-width="3" stroke-linecap="round" />
+                </svg>
+                <span class="text-2xl font-bold text-gray-900">ParkManager</span>
+            </div>
+            <nav class="flex items-center gap-8">
+                <a routerLink="inicio" routerLinkActive="active" class="text-gray-600 font-medium transition-colors hover:text-blue-700">Inicio</a>
+                <a routerLink="nosotros" routerLinkActive="active" class="text-gray-600 font-medium transition-colors hover:text-blue-600">Nosotros</a>
+                <a routerLink="servicios" routerLinkActive="active" class="text-gray-600 font-medium transition-colors hover:text-blue-600">Servicios</a>
+                <a routerLink="contacto" routerLinkActive="active" class="text-gray-600 font-medium transition-colors hover:text-blue-600">Contacto</a>
+                <button
+                    routerLink="ingresar"
+                    class="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-semibold transition-colors hover:bg-blue-700">
+                    Iniciar Sesión
+                </button>
+            </nav>
+        </div>
+    </div>
 </header>

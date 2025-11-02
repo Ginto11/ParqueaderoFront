@@ -30,8 +30,6 @@ export default class HistorialReservasComponent  implements OnInit{
     const { data: listaReservas } = await this.reservaService.obtenerReservasPorUsuario(id)
 
     this.reservas = listaReservas;
-
-    console.log(this.reservas)
   }
 
   actualizarReserva = async () :Promise<void> => {

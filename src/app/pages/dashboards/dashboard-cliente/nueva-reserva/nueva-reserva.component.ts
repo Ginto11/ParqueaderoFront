@@ -32,7 +32,7 @@ export default class NuevaReservaComponent implements OnInit {
   reserva: PostReserva = {
     vehiculoId: "",
     cupoId: "",
-    fechaIngreso: null
+    fechaIngresoEstipulada: null
   }
 
   async ngOnInit(): Promise<any> {
@@ -60,7 +60,7 @@ export default class NuevaReservaComponent implements OnInit {
 
       if(res.codigo == 201){ alert(`${res.mensaje}`) };
 
-      this.router .navigate(['dashboard-cliente']);
+      this.router .navigate(['dashboard/cliente']);
       
     }catch(error: unknown){
       alert(this.respuestasService.serverError(error));

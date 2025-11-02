@@ -38,7 +38,8 @@
                     <th class="p-3 text-left">Vehículo</th>
                     <th class="p-3 text-left">Cupo</th>
                     <th class="p-3 text-left">Fecha Reserva</th>
-                    <th class="p-3 text-left">Fecha Ingreso</th>
+                    <th class="p-3 text-left">Fecha Ingreso Estipulada</th>
+                    <th class="p-3 text-left">Fecha Ingreso Real</th>
                     <th class="p-3 text-left">Costo</th>
                     <th class="p-3 text-left">Estado</th>
                     <th class="p-3 text-center">Acciones</th>
@@ -50,8 +51,9 @@
                         <td class="p-3"> {{ reserva.id }} </td>
                         <td class="p-3"> {{ reserva.vehiculo.placa }} </td>
                         <td class="p-3">Cupo #{{ reserva.cupoId }}</td>
-                        <td class="p-3"> {{ reserva.fechaReserva | date: 'dd-MM-yyyy hh:mm' }} </td>
-                        <td class="p-3"> {{ reserva.fechaIngreso | date: 'dd-MM-yyyy hh:mm' }} </td>
+                        <td class="p-3"> {{ reserva.fechaReserva | date: 'dd-MM-yyyy hh:mm a' }} </td>
+                        <td class="p-3"> {{ reserva.fechaIngresoEstipulada | date: 'dd-MM-yyyy hh:mm a' }} </td>
+                        <td class="p-3"> {{ reserva.fechaIngresoReal | date: 'dd-MM-yyyy hh:mm a' }} </td>
                         <td class="p-3"> {{ (reserva.costo != null) ? (reserva.costo | currency:'COP $':'symbol':'1.2-2') : 'COP $0.00' }} </td>
                         
                         <td class="p-3 font-semibold"
