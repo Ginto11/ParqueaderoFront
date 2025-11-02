@@ -3,6 +3,8 @@ export interface CupoOcupado {
     placa: string | null;
     nombreUsuario: string | null;
     duracion: number | null;
-    fechaIngreso: number | null;
+    estadoDescripcion: string | null;
+    fechaIngresoEstipulada: Date | null;
+    fechaIngresoReal: Date | null;
     costo: number | null;
 }

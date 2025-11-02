@@ -39,7 +39,7 @@ export default class RegistrarVehiculoComponent implements OnInit {
 
       if(res.codigo == 201) { alert(res.mensaje); this.limpiarCampos(); }
 
-      this.router.navigate(['dashboard-cliente']);
+      this.router.navigate(['dashboard/cliente']);
 
     }catch(error: unknown){
       alert(this.respuestasService.serverError(error));

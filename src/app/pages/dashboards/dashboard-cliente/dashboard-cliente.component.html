@@ -24,9 +24,9 @@
         <table class="w-full border-collapse text-sm">
             <thead>
                 <tr class="bg-gray-100 text-left">
-                    <th class="p-2">Fecha</th>
-                    <th class="p-2">Hora Entrada</th>
-                    <th class="p-2">Hora Salida</th>
+                    <th class="p-2">Fecha Reserva</th>
+                    <th class="p-2">Fecha Entrada</th>
+                    <th class="p-2">Fecha Salida</th>
                     <th class="p-2">Ubicación</th>
                     <th class="p-2">Estado</th>
                     <th class="p-2">Acciones</th>
@@ -35,8 +35,8 @@
             <tbody>
                 @for(reserva of reservasActivas; track reserva.id){
                         <tr class="border-b">
-                            <td class="p-2"> {{ reserva.fechaReserva | date : 'dd-MM-yyyy hh:mm a' }} </td>
-                            <td class="p-2"> {{ reserva.fechaIngreso | date: 'shortTime' }} </td>
+                            <td class="p-2"> {{ reserva.fechaReserva | date : 'dd/MM/yyyy hh:mm a' }} </td>
+                            <td class="p-2"> {{ reserva.fechaIngresoEstipulada | date: 'dd/MM/YYYY hh:mm a' }} </td>
                             <td class="p-2"> {{ (reserva.fechaSalida != null) ? (reserva.fechaSalida | date: 'shortTime') : 'Sin definir.' }} </td>
                             <td class="p-2"> Cupo Nº {{ reserva.cupoId }} </td>
                             <td class="p-3 font-semibold"
@@ -57,11 +57,11 @@
 
     <!-- Historial de reservas -->
     <div class="bg-white shadow rounded-2xl p-6 mb-10">
-        <h3 class="text-lg font-semibold text-blue-600 mb-4">Historial de reservas más recientes.</h3>
+        <h3 class="text-lg font-semibold text-blue-600 mb-4s">Historial de reservas más recientes.</h3>
         <table class="w-full border-collapse text-sm">
             <thead>
                 <tr class="bg-gray-100 text-left">
-                    <th class="p-2">Fecha</th>
+                    <th class="p-2">Fecha Reserva</th>
                     <th class="p-2">Duración</th>
                     <th class="p-2">Ubicación</th>
                     <th class="p-2">Costo</th>
