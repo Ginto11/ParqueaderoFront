@@ -14,7 +14,7 @@ export class HeaderDashboardComponent implements OnInit{
   private router = inject(Router);
   private localstorageService = inject(LocalstorageService);
   
-  usuario!: UsuarioLogueado;
+  nombreUsuario = '';
   
   salir = () => {
     this.localstorageService.removerItem('usuario-parqueadero');
@@ -22,6 +22,8 @@ export class HeaderDashboardComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    this.usuario = JSON.parse(this.localstorageService.getItem('usuario-parqueadero'));
+    let usuario = JSON.parse(this.localstorageService.getItem('usuario-parqueadero'));
+    let usuarioNombresApellidos = usuario.nombreCompleto.split(' ');
+    this.nombreUsuario = `${usuarioNombresApellidos[0]} ${usuarioNombresApellidos[2]}`;
   }
 }
