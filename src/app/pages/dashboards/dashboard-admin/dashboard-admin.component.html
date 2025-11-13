@@ -1,8 +1,8 @@
-<section class="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-6 md:p-10">
+<section class="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-4 md:p-10">
   <!-- Encabezado -->
   <header class="mb-8">
-    <h1 class=" text-2xl md:text-3xl font-bold text-blue-700">Panel de Gestión</h1>
-    <p class="text-gray-600">Bienvenido, Admin. Aquí puedes monitorear y gestionar tu parqueadero.</p>
+    <h1 class=" text-2xl md:text-3xl font-bold text-blue-600">Panel de Gestión</h1>
+    <p class="text-gray-600">Bienvenido, {{ nombreUsuario }}. Aquí puedes monitorear y gestionar tu parqueadero.</p>
   </header>
 
   <!-- Cards de métricas principales -->
@@ -28,15 +28,15 @@
   <!-- Sección con gráficos y tablas -->
   <div class="w-ful grid md:grid-cols-2 gap-8">
     <!-- Gráfico de ocupación -->
-    <div class="bg-white p-6 rounded-2xl shadow flex flex-col justify-between">
-      <h3 class="text-lg font-semibold text-blue-600 mb-4">Ingresos</h3>
+    <div class="bg-white p-4 md:p-6 rounded-2xl shadow flex flex-col justify-between">
+      <h3 class="w-full text-lg font-semibold text-blue-600 mb-4">Ingresos</h3>
       <div class="overflow-x-auto">
         <canvas id="chart-lines"></canvas>
       </div>
     </div>
 
     <!-- Tabla de últimas reservas -->
-    <div class="w-full bg-white p-6 rounded-2xl shadow">
+    <div class="w-full bg-white p-4 md:p-6 rounded-2xl shadow">
       <h3 class="text-lg font-semibold text-blue-600 mb-4">Últimas Reservas</h3>
       <table class="w-full border-collapse text-sm">
         <thead>
