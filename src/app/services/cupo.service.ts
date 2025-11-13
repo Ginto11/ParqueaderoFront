@@ -43,4 +43,34 @@ export class CupoService {
       throw error;
     }
   }
+
+  obtenerVehiculosTotalesDelParqueadero = async () :Promise<ResponseHttp> => {
+    try{
+      return lastValueFrom(
+        this.http.get<ResponseHttp>(`${environment.URL_SERVER}/api/cupos/cantidad-vehiculos`)
+      );
+    }catch(error){
+      throw error;
+    }
+  }
+
+  salidaVehiculo = async (cupoId : number) :Promise<any> => {
+    try {
+      return await lastValueFrom(
+        this.http.get(`${environment.URL_SERVER}/api/cupos/salida-vehiculo/${cupoId}`)
+      );
+    }catch(error){
+      throw error;
+    }
+  }
+
+  buscarCupoPorPlacaVehiculo = async (placa : string) : Promise<ResponseHttp> => {
+    try{
+      return await lastValueFrom(
+        this.http.get<ResponseHttp>(`${environment.URL_SERVER}/api/cupos/vehiculo-placa/${placa}`)
+      );
+    }catch(error){
+      throw error; 
+    }
+  }
 }

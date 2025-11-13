@@ -1,5 +1,5 @@
 export interface CupoOcupado {
-    id: number | null;
+    id: number;
     placa: string | null;
     nombreUsuario: string | null;
     duracion: number | null;

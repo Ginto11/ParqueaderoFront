@@ -78,6 +78,10 @@ export const routes: Routes = [
                     {
                         path: 'gestion-parqueaderos',
                         loadComponent: () => import('./pages/dashboards/dashboard-admin/gestionar-parqueadero/gestionar-parqueadero.component')
+                    },
+                    {
+                        path: 'reportes',
+                        loadComponent: () => import('./pages/dashboards/dashboard-admin/reportes/reportes.component')
                     }
                 ]
             }

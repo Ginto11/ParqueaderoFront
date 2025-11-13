@@ -1,0 +1,35 @@
+<section class="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-6 md:p-10">
+
+  <div class="mb-6">
+    <button routerLink="/dashboard/admin"
+      class="shadow-md flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-xl font-medium hover:bg-blue-700 transition cursor-pointer">
+      <i class="pi pi-arrow-left"></i>
+      Regresar
+    </button>
+  </div>
+
+  <header class="mb-8 text-center">
+    <h1 class="text-3xl font-bold text-blue-700">Panel de reportes</h1>
+    <p class="text-gray-600">Seccion de reportes para monitoreo.</p>
+  </header>
+
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <app-grafica-ingresos />
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <app-grafica-egresos />
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <app-grafica-metodo-pago />
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <app-grafica-tipo-vehiculo />
+    </div>
+  </div>
+
+</section>
