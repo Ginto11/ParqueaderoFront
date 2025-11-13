@@ -1,11 +1,11 @@
-<section class="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-6 md:p-10">
+<section class="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-4 md:p-10">
     <!-- Encabezado -->
     <header class="mb-8">
-        <h1 class="text-3xl font-bold text-blue-700">Mi Panel</h1>
+        <h1 class="text-2xl font-bold text-blue-700">Mi Panel</h1>
     </header>
 
     <!-- Información personal -->
-    <div class="bg-white shadow rounded-2xl p-6 mb-10">
+    <div class="bg-white shadow rounded-2xl p-4 md:p-6 mb-10">
         <h3 class="text-lg font-semibold text-blue-600 mb-4">Información Personal</h3>
         <div class="grid md:grid-cols-2 gap-4 text-gray-700">
             <p><strong>Nombre Completo:</strong> {{ usuarioLogueado.nombreCompleto }} </p>
@@ -19,9 +19,10 @@
     </div>
 
     <!-- Reservas activas -->
-    <div class="bg-white shadow rounded-2xl p-6 mb-10">
+    <div class="w-full bg-white shadow rounded-2xl p-4 md:p-6 mb-10">
         <h3 class="text-lg font-semibold text-blue-600 mb-4">Mis reservas activas.</h3>
-        <table class="w-full border-collapse text-sm">
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse text-sm">
             <thead>
                 <tr class="bg-gray-100 text-left">
                     <th class="p-2">Fecha Reserva</th>
@@ -53,12 +54,14 @@
                     }
             </tbody>
         </table>
+        </div>
     </div>
 
     <!-- Historial de reservas -->
-    <div class="bg-white shadow rounded-2xl p-6 mb-10">
-        <h3 class="text-lg font-semibold text-blue-600 mb-4s">Historial de reservas más recientes.</h3>
-        <table class="w-full border-collapse text-sm">
+    <div class="bg-white shadow rounded-2xl p-4 md:p-6 mb-10">
+        <h3 class="text-lg font-semibold text-blue-600 mb-4">Historial de reservas más recientes.</h3>
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse text-sm">
             <thead>
                 <tr class="bg-gray-100 text-left">
                     <th class="p-2">Fecha Reserva</th>
@@ -86,24 +89,25 @@
                 }
             </tbody>
         </table>
+        </div>
     </div>
     <!-- Acciones rápidas -->
     <div class="grid md:grid-cols-4 gap-6">
         <a routerLink="nueva-reserva"
-            class="bg-blue-600 text-white p-6 rounded-2xl shadow hover:bg-blue-700 transition text-center font-semibold">
+            class="bg-blue-600 text-white p-4 md:p-6 rounded-2xl shadow hover:bg-blue-700 transition text-center font-semibold">
             Nueva Reserva
         </a>
         <a routerLink="historial-reservas"
-            class="bg-gray-600 text-white p-6 rounded-2xl shadow hover:bg-gray-700 transition text-center font-semibold">
+            class="bg-gray-600 text-white p-4 md:p-6 rounded-2xl shadow hover:bg-gray-700 transition text-center font-semibold">
             Ver Historial
         </a>
         <a routerLink="ayuda"
-            class="bg-green-600 text-white p-6 rounded-2xl shadow hover:bg-green-700 transition text-center font-semibold">
+            class="bg-green-600 text-white p-4 md:p-6 rounded-2xl shadow hover:bg-green-700 transition text-center font-semibold">
             Soporte / Ayuda
         </a>
     
         <a routerLink="registrar-vehiculo"
-            class="bg-yellow-600 text-white p-6 rounded-2xl shadow hover:bg-yellow-700 transition text-center font-semibold">
+            class="bg-yellow-600 text-white p-4 md:p-6 rounded-2xl shadow hover:bg-yellow-700 transition text-center font-semibold">
             Registrar Vehiculo
         </a>
     </div>

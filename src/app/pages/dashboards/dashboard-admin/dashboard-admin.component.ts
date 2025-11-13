@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { Chart, ChartData, ChartType } from 'chart.js/auto';
 import ApexCharts from 'apexcharts';
 import { TransaccionesService } from '../../../services/transacciones.service';
+import { LocalstorageService } from '../../../services/localstorage.service';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -23,6 +24,7 @@ export default class DashboardAdminComponent implements OnInit {
   private reservasService = inject(ReservaService);
   private respuestasService = inject(RespuestasService);
   private transaccionService = inject(TransaccionesService);
+  private localstorageService = inject(LocalstorageService);
   
   cantidadCuposDisponibles!: number;
   ingresosDiarios!: number;
@@ -32,7 +34,7 @@ export default class DashboardAdminComponent implements OnInit {
 
   chartLines!: Chart;
 
-
+  nombreUsuario = '';
 
 
   async ngOnInit(): Promise<void> {
@@ -41,6 +43,10 @@ export default class DashboardAdminComponent implements OnInit {
 
       await this.obtenerDatos();
       this.crearGraficaLine();
+
+      let usuario = JSON.parse(this.localstorageService.getItem('usuario-parqueadero'));
+      let usuarioNombresApellidos = usuario.nombreCompleto.split(' ');
+      this.nombreUsuario = `${usuarioNombresApellidos[0]} ${usuarioNombresApellidos[2]}`;
 
     } catch (error) {
       this.respuestasService.serverError(error);
