@@ -63,4 +63,34 @@ export class ReservaService {
       throw error;
     }
   }
+
+  obtenerTodasLasReservasActivas = async () :Promise<ResponseHttp> => {
+    try{
+      return await lastValueFrom(
+        this.http.get<ResponseHttp>(`${environment.URL_SERVER}/api/reservas/activas`)
+      );
+    }catch(error){
+      throw error;
+    }
+  }
+
+  obtenerUltimasReservas = async () :Promise<ResponseHttp> => {
+    try {
+      return await lastValueFrom(
+        this.http.get<ResponseHttp>(`${environment.URL_SERVER}/api/reservas/ultimas-reservas`)
+      )
+    }catch(error){
+      throw error;
+    }
+  }
+
+  ingresarReservaConCupoId = async (id: number) :Promise<ResponseHttp> => {
+    try {
+      return await lastValueFrom(
+        this.http.get<ResponseHttp>(`${environment.URL_SERVER}/api/reservas/ingresar-vehiculo/${id}`)
+      )
+    }catch(error){
+      throw error;
+    }
+  }
 }

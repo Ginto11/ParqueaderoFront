@@ -20,11 +20,19 @@ export class RespuestasService {
       return 'Complete todos los campos.';
     }
 
+    if(errorConvertido.status == 401){
+      return 'Credenciales incorrectas';
+    }
+
+    if(errorConvertido.status == 409){
+      return 'Conflicto en la base de datos, valide con soporte.';
+    }
+
     if(errorConvertido.status >= 500){
       return 'Error interno del servidor. Comuníquese con soporte.';
     }
 
-    return errorConvertido.message;
+    return errorConvertido.error.mensaje;
   }
 
 }

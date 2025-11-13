@@ -6,12 +6,13 @@ import { LocalstorageService } from '../../../../services/localstorage.service';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import localeEsCo from '@angular/common/locales/es-CO';
+import {TableModule} from 'primeng/table';
 
 registerLocaleData(localeEsCo);
 
 @Component({
   selector: 'app-historial-reservas',
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, TableModule],
   templateUrl: './historial-reservas.component.html',
   styles: ``
 })

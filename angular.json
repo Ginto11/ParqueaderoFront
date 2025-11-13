@@ -27,9 +27,9 @@
               }
             ],
             "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+              "src/styles.css"            ],
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -91,9 +91,11 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           }
         }
       }

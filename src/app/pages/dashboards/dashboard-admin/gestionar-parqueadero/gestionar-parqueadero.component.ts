@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Cupo } from '../../../../interfaces/cupo.interface';
 import { FormsModule } from "@angular/forms";
+import { ReservaService } from '../../../../services/reserva.service';
 
 @Component({
   selector: 'app-gestionar-parqueadero',
@@ -16,10 +17,14 @@ import { FormsModule } from "@angular/forms";
 export default class GestionarParqueaderoComponent implements OnInit {
 
   private cupoService = inject(CupoService);
+  private reservaService = inject(ReservaService);
   private respuestasService = inject(RespuestasService);
   
   cuposOcupados: CupoOcupado[] | null = null;
+  copiaCuposOcupados: CupoOcupado[] | null = null;
+  cupoBuscado: CupoOcupado | null = null;
   cuposDisponibles: Cupo[] | null = null;
+  placa: string = '';
 
   async ngOnInit(): Promise<void> {
 
@@ -46,11 +51,13 @@ export default class GestionarParqueaderoComponent implements OnInit {
       if($input.value == 'disponibles'){
         this.cuposDisponibles = cupos.data;
         this.cuposOcupados = null;
+        this.cupoBuscado = null;
       }
 
       if($input.value == 'ocupados'){
         this.cuposOcupados = cupos.data;
         this.cuposDisponibles = null;
+        this.cupoBuscado = null;
       }
 
     }catch(error){
@@ -58,12 +65,61 @@ export default class GestionarParqueaderoComponent implements OnInit {
     }
   }
   
-  darSalida = async (cupo: CupoOcupado) :Promise<void> => {
-    console.log(cupo);
+  darSalida = async (cupoId: number) :Promise<void> => {
+    try {
+      const res = await this.cupoService.salidaVehiculo(cupoId);
+
+      if(res.codigo == 200){
+        alert(res.data)
+        window.location.reload();
+      }
+      
+    }catch(error){
+      alert(this.respuestasService.serverError(error));
+    }
   }
 
-  darIngreso = async (cupo: CupoOcupado): Promise<void> => {
-    console.log(cupo)
+  darIngreso = async (cupoId: number): Promise<void> => {
+    try{
+      const res = await this.reservaService.ingresarReservaConCupoId(cupoId);
+
+      console.log(res)
+
+      if(res.codigo == 200){
+        alert(`${res.data}`)
+        window.location.reload();
+      }
+      
+    }catch(error){
+      this.respuestasService.serverError(error);
+    }
+  }
+
+  buscarVehiculo = async () :Promise<void> => {
+    try {
+
+      if(this.placa == ''){
+        alert('Ingrese una placa, por favor...');
+      }
+
+      this.copiaCuposOcupados = this.cuposOcupados;
+
+      const res = await this.cupoService.buscarCupoPorPlacaVehiculo(this.placa);
+
+
+      this.cupoBuscado = res.data;
+      this.cuposDisponibles = null;
+      this.cuposOcupados = null;
+
+    }catch(error){
+      alert(this.respuestasService.serverError(error));
+    }
+  }
+
+  limpiarBusqueda =  () :void => {
+    this.placa = '';
+    this.cupoBuscado = null;
+    this.cuposOcupados = this.copiaCuposOcupados;
   }
 
 }

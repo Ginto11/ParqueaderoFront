@@ -1,4 +1,4 @@
-<section class="min-h-screen bg-gray-50 p-6 md:p-10">
+<section class="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 p-6 md:p-10">
     <!-- Encabezado -->
     <header class="mb-8">
         <h1 class="text-3xl font-bold text-blue-700">Mi Panel</h1>
@@ -39,14 +39,14 @@
                             <td class="p-2"> {{ reserva.fechaIngresoEstipulada | date: 'dd/MM/YYYY hh:mm a' }} </td>
                             <td class="p-2"> {{ (reserva.fechaSalida != null) ? (reserva.fechaSalida | date: 'shortTime') : 'Sin definir.' }} </td>
                             <td class="p-2"> Cupo Nº {{ reserva.cupoId }} </td>
-                            <td class="p-3 font-semibold"
+                            <td class="p-3 font-bold"
                             [ngClass]="{
                                 'text-green-600': reserva.estadoDescripcion == 'Activa',
                                 'text-red-600': reserva.estadoDescripcion == 'Cancelada',
                                 'text-yellow-600': reserva.estadoDescripcion == 'Finalizada'
                             }" 
                         > {{reserva.estadoDescripcion}} </td>
-                            <td class="p-2">
+                            <td class="p-2 font-bold">
                                 <button class="text-red-600 cursor-pointer hover:underline" (click)="cancelarReserva(reserva.id)" >Cancelar</button>
                             </td>
                         </tr>
@@ -71,11 +71,11 @@
             <tbody>
                 @for(reserva of historialReservas; track reserva.id){
                     <tr class="border-b">
-                        <td class="p-2"> {{ reserva.fechaReserva | date : 'dd-MM-yyyy hh:mm a' }} </td>
-                        <td class="p-2"> {{ (reserva.duracion) ? `${reserva.duracion} H` : '0 H' }} </td>
+                        <td class="p-2"> {{ reserva.fechaReserva | date : 'dd/MM/yyyy hh:mm a' }} </td>
+                        <td class="p-2"> {{ (reserva.duracion || 0) | number: '1.0-0' }} H </td>
                         <td class="p-2"> Cupo Nº {{ reserva.cupoId }}</td>
                         <td class="p-2"> {{ (reserva.costo != null) ? (reserva.costo | currency:'COP $':'symbol':'1.2-2') : 'COP $0.00' }} </td>
-                        <td class="p-3 font-semibold"
+                        <td class="p-3 font-bold"
                             [ngClass]="{
                                 'text-green-600': reserva.estadoDescripcion == 'Activa',
                                 'text-red-600': reserva.estadoDescripcion == 'Cancelada',
