@@ -58,7 +58,12 @@ export default class DashboardAdminComponent implements OnInit {
     this.cantidadVehiculosHoy = cuposOcupados;
 
     const { data: ultimasR } = await this.reservasService.obtenerUltimasReservas();
-    this.ultimasReservas = ultimasR;
+
+    this.ultimasReservas = ultimasR.map((reserva: any) => {
+    const partes = reserva.nombreUsuario.split(' ');
+    const nombreCorto = `${partes[0]} ${partes[1] ?? ''}`.trim(); // Primer nombre y apellido
+    return { ...reserva, nombreUsuario: nombreCorto };
+  });
 
     const { data: ingresosDiarios } = await this.transaccionService.obtenerIngresosDiarios();
     this.ingresosDiarios = ingresosDiarios.costo;
